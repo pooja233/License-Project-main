@@ -1,15 +1,22 @@
 import React from 'react'
 import {Accordion, Button, Container, Form,Navbar,Nav,NavDropdown} from "react-bootstrap";
 import {Link, useRouteMatch, withRouter} from "react-router-dom";
+import Service from "../app/service/service.js";
+
 function Header(){
+    
+var name=Service.readMessage();
+console.log("from login  ",name);
   return (
      
-    <div className="headertop">
+   <div className="db-bg">
+     <div className="container-fluid">
+ <div className="dashboard1">
                         
                     <div className="row" >
                         <nav className="navbar navbar-expand-lg  ftco_navbar  ftco-navbar-light" id="ftco-navbar" style={{width: "100%"}}>
                             <div className="container-fluid">
-                                <a className="navbar-brand" href="login.html" style={{width: "6%"}}>  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 112.837 137.566">
+                                <a className="navbar-brand" href="/dashboard/" style={{width: "6%"}}>  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 112.837 137.566">
                             <g id="Group_2" data-name="Group 2">
                                 <g id="Group_1" data-name="Group 1" transform="translate(0 128.775)">
                                 <path id="Path_1" data-name="Path 1" d="M384.859,1758.51a2.412,2.412,0,0,1,1.931.76,3.326,3.326,0,0,1,.657,2.232,3.506,3.506,0,0,1-.652,2.3,2.386,2.386,0,0,1-1.936.776h-1.948v-6.072Zm-.753,5.037h.589a1.364,1.364,0,0,0,1.159-.488,2.54,2.54,0,0,0,.372-1.536,2.427,2.427,0,0,0-.377-1.49,1.368,1.368,0,0,0-1.155-.488h-.589Z" transform="translate(-382.911 -1757.538)" fill="#6b2d92"/>
@@ -58,23 +65,25 @@ function Header(){
                             <div className="collapse navbar-collapse" id="ftco-nav">
                             
                             <ul className="navbar-nav m-auto">
-                                    <li className="nav-item active"><a href="#" className="nav-link">Dashboard</a></li>
+                                    <li className="nav-item active"><a href="/dashboard/" className="nav-link">Dashboard</a></li>
                                 <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
                                 <div className="dropdown-menu" aria-labelledby="dropdown08" style={{marginTop: "-10px"}}>
-                                    <a className="dropdown-item" href="#">Page 1</a>
+                                    {/* <a className="dropdown-item" href="#">Page 1</a>
                                     <a className="dropdown-item" href="#">Page 2</a>
                                     <a className="dropdown-item" href="#">Page 3</a>
-                                    <a className="dropdown-item" href="#">Page 4</a>
+                                    <a className="dropdown-item" href="#">Page 4</a> */}
                                 </div>
                                 </li>
                                     <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage License</a>
+                                <a className="nav-link dropdown-toggle" href="/manage/" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
                                 <div className="dropdown-menu" aria-labelledby="dropdown08" style={{marginTop: "-10px"}}>
-                                    <a className="dropdown-item" href="/generation/">Offline License</a>
-                                    <a className="dropdown-item" href="#">Online License</a>
-                                    <a className="dropdown-item" href="#">Download dll/jar</a>
-                                    <a className="dropdown-item" href="#">Page 4</a>
+                
+                                    <Link className="dropdown-item" to ='/generation/' >Offline License</Link>
+                                    <a className="dropdown-item" href="/download/">Download</a>
+                                    <a className="dropdown-item" href="/manageorg">Organization</a>
+                                    <a className="dropdown-item" href="/manageusers/">Users</a>
+                                    <a className="dropdown-item" href="#">Products</a>
                                 </div>
                                 </li>
                                    
@@ -87,12 +96,10 @@ function Header(){
 
                                 <li className="nav-item dropdown">
                                     
-                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-user icon"></i> Administrator</a>
+                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-user icon"></i> {name}</a>
                                     <div className="dropdown-menu" aria-labelledby="dropdown08" style={{marginTop: "-20px"}}>
-                                    <a className="dropdown-item" href="#">Page 1</a>
-                                    <a className="dropdown-item" href="#">Page 2</a>
-                                    <a className="dropdown-item" href="#">Page 3</a>
-                                    <a className="dropdown-item" href="#">Page 4</a>
+                                    <a className="dropdown-item" href="/">Logout</a>
+                                    
                                     </div>
                                 </li>
                             </ul>
@@ -102,7 +109,9 @@ function Header(){
                             </div>
                         </nav>
                     </div>
+                    
 </div>
+</div></div>
 
   );
 

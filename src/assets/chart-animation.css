@@ -33,7 +33,7 @@
   
   $deg: ($perc/100*360)+deg;
   
-  @-webkit-keyframes #{$name} {
+  @-webkit-keyframes #$name {
     0% {
       -webkit-transform: rotate(0deg);
     }
@@ -84,7 +84,7 @@
   }
     
   .donut-chart {
-    &.#{$name} {
+    &.#$name{
       width: $size;
       height: $size;
       background: $base;
@@ -101,7 +101,7 @@
           -webkit-transform: rotate($deg);  
           -webkit-transform-origin: bottom right;
           background: $color;
-          -webkit-animation: #{$name} $speed linear;
+          -webkit-animation: #$name $speed linear;
         
           @if $perc > 0 {
             display: block;
@@ -171,10 +171,9 @@
       }
     }
   }
-} // mixin
+} 
 
 
-// Charts
 @include donut-chart('chart1', 67, 300px, 25px, 1s, #e1e1e1, #fff, #48b2c1);
 
 @include donut-chart('chart2', 37, 200px, 15px, 2s, #e1e1e1, #fff, #f26a4a);

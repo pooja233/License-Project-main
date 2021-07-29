@@ -10,6 +10,9 @@ const ManageUsers= lazy(() => import('./Manage/ManageUsers'))
 const Report = lazy(() => import('./Report/Report'))
 const manage = lazy(() => import('./Manage/manage'))
 const licgen = lazy(() => import('./Dashboard/LicGen'))
+const download = lazy(() => import('./Dashboard/Download'))
+const Manageorg = lazy(() => import('./Dashboard/Manage-org'))
+const Manageusers = lazy(() => import('./Dashboard/Manage-users'))
 
 
 function AppRoutes() {
@@ -28,7 +31,9 @@ function AppRoutes() {
         <Route exact path="/report/" component={Report}/>
         <Route exact path="/manage/" component={manage}/>
         <Route exact path="/generation/" component={licgen}/>
-
+        <Route exact path="/download/" component={download}/>
+        <Route exact path="/manageorg/" component={Manageorg}/>
+        <Route exact path="/manageusers/" component={Manageusers}/>
       </Switch>
     </Suspense>
   )

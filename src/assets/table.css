@@ -279,17 +279,16 @@ font-size: 14px;
     float: right;
     display:block;
 }
-.x_content .btn-group, .btn-group-vertical {
+.btn-group, .btn-group-vertical {
     position: relative;
     display: -ms-inline-flexbox;
     display: inline-flex;
     vertical-align: middle;
-    /* width: 100px; */
-    /* left: 1164px; */
+    width: 100px;
+    left: 1164px;
     padding-top: 20px;
-    top: 39px;
-    left: 243px;
 }
+
 
 .x_content .btn {
     display: inline-block;
@@ -346,70 +345,4 @@ font-size: 14px;
     background: #f5f5f5!important;
     border-color: #000!important;
     font-size: 16px;
-}
-
-
-.x_content .dataTables_length {
-    /* width: 15%; */
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 60px;
-}
-
-@media screen and (max-width: 767px){
-div.dt-buttons {
-    float: none;
-    /* width: 100%; */
-    text-align: center;
-    margin-bottom: 0.5em;
-}
-.x_content .btn-group, .btn-group-vertical {
-    position: relative;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    vertical-align: middle;
-    width: 100px;
-    /* left: 1164px; */
-    /* padding-top: 20px; */
-    /* top: 39px; */
-    /* left: 243px; */
-}
-
-.x_content label{
-    margin-top: 43px;
-    /* position: relative; */
-    /* text-align: left; */
-    /* left: -165px; */
-    /* position: relative; */
-    float: right;
-}
-}
-
-@media screen and (max-width: 640px){ 
-
-	.x_content .btn-group, .btn-group-vertical {
-		position: relative;
-		display: -ms-inline-flexbox;
-		display: inline-flex;
-		vertical-align: middle;
-		width: 100px;
-		left: 1px;
-		/* padding-top: 20px; */
-		/* top: 39px; */
-		/* left: 243px; */
-	}
-	.x_content .t-scroller{
-		overflow-x: scroll;
-
-	}
-	.dochart-title {
-		margin-bottom: 22px;
-		text-align: center;
-		font-size: 25px
-	}
-	.small-chartbox {
-		margin:0 auto;
-
-	}
-	
 }

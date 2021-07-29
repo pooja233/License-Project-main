@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Service from "../service/service.js";
-import '../../assets/style1.css';
-
-
-
-import $ from 'jquery';
+import '../../assets/g-icons.css';
+import '../../assets/style.css';
+import '../../assets/generation.css';
+ 
+    
 const GenerateLicense = () => {
+
+   
+var name=Service.readMessage();
+console.log("from login  ",name);
   const initialState = {
     username: null,
     email: "",
@@ -27,7 +31,6 @@ const [fields, setFields] = useState([{value:null}]);
 
   function handleChange(i, event) {
     const values = [...fields];
-
     values[i].value = event.target.value;
     setFields(values);
   }
@@ -102,52 +105,26 @@ const [fields, setFields] = useState([{value:null}]);
     setSubmitted(false);
   };
 
-  function date()
-  {
-    $('#myDatepicker2').datetimepicker({
-      format: 'DD.MM.YYYY'
-  });
-  $('#myDatepicker3').datetimepicker({
-      format: 'DD.MM.YYYY'
-  });};
-
-  var feature = 1;
-  function add_fields() {
-  feature++;
-  var objTo = document.getElementById('feature_fileds')
-  var divtest = document.createElement("div");
-  divtest.innerHTML = '<div><input type="text" style="width:80%;" name="Feature[]" value="" /><small></div>';
-  
-  objTo.appendChild(divtest)
-
-  };
-
-
   return (
     
-<div className="submit-form">
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newLicense}>
-            Add
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="form-group">
-          <div className="row row-border">      
-          <div className="col breadcrum">
-            <span style={{position: 'relative',left: '50px'}}>
-                           <i className="fa fa-home" style={{paddingRight: '10px'}}></i><a href="">Home</a>
-                           - Licence Generation
+<div className="db-bg">
+
+    
+    
+      <div className="container-fluid">
+
+ <div className="dashboard">
+                       
+
+                   <div className="row row-border">      
+                              <div className="col breadcrum"><span style={{position:"relative",left:"50px"}}>
+                           <i className="fa fa-home" style={{paddingRight: "10px"}}></i><a href="/dashboard/">Home</a> -Offline License
                         </span></div>
                          <div className="col-7"></div>
-                      <div className="col welcome"><h6 >Welcome back!</h6>
-                          <span>Last updated on March 30 at 19:30 Pm  <a href=""><i className="fa fa-refresh" aria-hidden="true"></i></a></span>
+                      <div className="col welcome"><h6 >Welcome back {name}!</h6>
+                       
                           </div>
                     </div>
-                   
 
                  <div className="row break-row">        
                     
@@ -157,135 +134,142 @@ const [fields, setFields] = useState([{value:null}]);
                         </div>
                         <div className="card-body">
                             <form className="form" role="form" autoComplete="off">
-                                <div className="form-group row">
-                                <label class="col-lg-3 col-form-label form-control-label">User Name</label>
-                                <div className="col-lg-9">
-                                        <input className="form-control" type="text" value="" 
-                                        placeholder="User Name"/>
-                                    </div>
-                                </div>
-                                    <div className="form-group row">
-                                <label class="col-lg-3 col-form-label form-control-label">Email ID</label>
-                                <div className="col-lg-9">
-                                        <input className="form-control" type="text" value="" placeholder="Enter Email ID" />
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label className="col-lg-3 col-form-label form-control-label">License Type</label>
-                                    <div className="col-lg-9">
-                                    <select class="form-control selectpicker" id="select-country" data-live-search="true">
-                                                <option></option>
-                                     <option value="Trial">Trial</option>
-                                      <option value="Standard">Standard</option>
-            
-                                                            </select>
-                              
-                                                                          </div>
-                                </div>
 
-                                <div className="form-group row" style={{marginBottom: '.6em'}}>
-                                    <label className="col-lg-3 col-form-label form-control-label">Start Date</label>
-                                    <div className="col-lg-9">
-                                    <div className="form-group" style={{marginBottom: '.6em'}}>
-                                            <div className="input-group date" id="myDatepicker2">
-                                                <input type="text" className="form-control"/>
-                                         <span className="input-group-addon" style={{width: '50px', height: '47px' ,position: 'relative',top: '2px', background: '#f7f7f7'}}>
-                                                   <span className="glyphicon glyphicon-calendar" style={{position: 'relative', left: '15px', top: '10px',color: '#70088a'}}></span>
-                                                </span>
+                            
+      {submitted ? (
+        <div>
+          <h4>You submitted successfully!</h4>
+          {/* <button className="btn btn-success" onClick={newLicense}>
+            Add
+          </button> */}
+        </div>
+      ) : (
+      <div>
+          <div className="form-group row">
+          <label className="col-lg-3 col-form-label form-control-label" htmlFor="username">User Name</label>
+          <div className="col-lg-9">
+          <input type="text" className="form-control" id="username" name="username" onChange={handleInputChange} value={info.username || ''} required placeholder="User Name"></input></div></div>
+
+ <div className="form-group row">
+          <label className="col-lg-3 col-form-label form-control-label" htmlFor="email">Email Id</label>
+          <div className="col-lg-9">
+          <input type="text" className="form-control" id="email" name="email" onChange={handleInputChange} value={info.email || ''} required placeholder="Email Id"></input></div></div>
+                                
+ <div className="form-group row">
+            <label className="col-lg-3 col-form-label form-control-label" htmlFor="licensetype">License Type</label>
+           <div className="col-lg-9">
+             <select className="form-control selectpicker" id="select-country" data-live-search="true" value={selectedLic} onChange={handleSelectChange}>
+            <option value="Trial">Trial</option>
+            <option value="Standard">Standard</option>
+          </select>
+          </div></div>
+
+
+<div className="form-group row" style={{marginBottom: ".6em"}}>            
+<label className="col-lg-3 col-form-label form-control-label" htmlFor="startdate">Start Date</label>
+<div className="col-lg-9">
+   <div className="form-group" style={{marginBottom: ".6em"}}>
+   <div className="input-group date" id="myDatepicker2">
+            <input
+            type="date"
+              className="form-control"
+              id="startdate"
+              required
+              value={info.startdate || ' '}
+              onChange={handleInputChange}
+              name="startdate"
+            />
+    
                                             </div>
                                         </div>
                                   </div>
                                 </div>
-                                <div className="form-group row" style={{marginBottom: '.6em'}}>
-                                    <label className="col-lg-3 col-form-label form-control-label">End Date</label>
-                                    <div className="col-lg-9">
-                                        <div className="form-group" style={{marginBottom: '.6em'}}>
-                                            <div className="input-group date" id="myDatepicker3">
-                                            <input type="text" className="form-control"/>
-                                         <span className="input-group-addon" style={{width: '50px', height: '47px', position: 'relative',top: '2px', background: '#f7f7f7'}}>
-                                                   <span className="glyphicon glyphicon-calendar" style={{position: 'relative', left: '15px', top: '10px',color: '#70088a'}}></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                               
-                             
-                                    <div className="form-group row">
-                                    <label className="col-lg-3 col-form-label form-control-label">Product</label>
-                                    <div className="col-lg-9">
-                                        <input className="form-control" type="text" value="" placeholder="Product Name"/>
-                                    </div>
-                                </div>
-                                <div className="form-group row">
-                                    <label className="col-lg-3 col-form-label form-control-label" >Product Features</label>
-                                    <div className="col-lg-9" id="pf">
-                            
-                                        <span className="plus" onClick="add_fields();">
-                                            <i className="fa fa-plus" aria-hidden="true"></i>
-                                 
-                                        </span>
-                                        <span> <h6>Add Features</h6></span>
-                                        <div id="feature_fileds">
-                                            <div>
-                                             
-                                            </div>
-                                         </div>
 
-                                    </div>
+<div className="form-group row" style={{marginBottom: ".6em"}}>            
+<label className="col-lg-3 col-form-label form-control-label" htmlFor="enddate">End Date</label>
+<div className="col-lg-9">
+   <div className="form-group" style={{marginBottom: ".6em"}}>
+   <div className="input-group date" id="myDatepicker2">
+            <input
+            type="date"
+              className="form-control"
+              id="enddate"
+              required
+              value={info.enddate || ' '}
+              onChange={handleInputChange}
+              name="enddate"
+            />
+    
+                                            </div>
+                                        </div>
+                                  </div>
                                 </div>
-                            
-                                <div className="form-group row">
-                                    <label className="col-lg-3 col-form-label form-control-label"></label>
-                                    <div className="col-lg-4" click={saveInfo}>
-                                        <input type="reset" className="btn btn-secondary" value="Generate Licence"/>
-                                        </div>
-                                        <div className="col-lg-4">
-                                            <input type="button" className="btn btn-primary" value="Validate Licence"/>
-                                        </div>
-                                    </div>
+
+
+                  <div className="form-group row">
+          <label className="col-lg-3 col-form-label form-control-label" htmlFor="product">Product List</label>
+          <div className="col-lg-9">
+          <input type="text" className="form-control" id="product" name="product" onChange={handleInputChange} value={info.product || ''} required placeholder="Product"></input></div></div>                  
+                                     
+                                                                             
+
+           <div className="form-group row">
+            <label className="col-lg-3 col-form-label form-control-label"  htmlFor="custlist">Product Features</label>
+       
+          <div className="col-lg-9" id="pf">
+          <span className="plus" onClick={() => handleAdd()}>
+          <i className="fa fa-plus" aria-hidden="true"></i>
+      </span>
+<span> <h6>Add Features</h6></span>
+
+      {fields.map((field, idx) => {
+        return (
+      
+          <div key={`${field}-${idx}`}>
+         <span>
+          
+            <input
+              type="text"
+               className="form-control"
+                required
+                id="custlist"
+                name="custlist"
+                value={field.value || ' '}
+              placeholder="Enter text"
+              onChange={e => handleChange(idx, e)}
+            />
+             <button type="button"  style={{    paddingleft: '6px',
+    marginLeft: '93%',
+    marginTop: '-1%'}}onClick={() => handleRemove(idx)}>
+              X
+            </button>
+           </span>
+</div>
+);
+      })}
+ </div> </div>
                                 
+
+    <div className="form-group row">
+<label className="col-lg-3 col-form-label form-control-label"></label>
+                        <div className="col-lg-4">
+            <input type="reset" className="btn btn-secondary" style={{width:"200%"}} value="Generate Licence" onClick={saveInfo}/>
+                                        </div>
+                                      
+                                    </div>                                
+                              
+
+
+                                </div>)}
+                             
                             </form>
                         </div>
                     </div>
     
                 </div>  
 
-                            <div className="row" style={{paddingTop: '45px', paddingBottom: '45px'}}></div>
 
-                            <div className="row" style={{backgroundColor: '#F7F6FC', padding: '10px'}}>
-                                  <div className="col-sm-4" style={{fontSize: '.7em'}}>Copyright 2021 SLK Software Services Pvt, Ltd. All Rights Reserved. </div>
-                                <div className="col-sm-4"></div>
-  <div className="col-sm-4" style={{fontSize: '.7em', textAlign: 'right'}}><a href="#">Terms & Policy</a></div>
-                       
-</div>
-
-</div>
-
-<script src="js/daterangepicker.js"></script>
-  
-<script src="vendors/bootstrap-datetimepicker.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-
-
-    <script src="vendors/jquery/dist/jquery.min.js"></script>
-   
-    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-   
-    <script src="vendors/fastclick/lib/fastclick.js"></script>
-  
-    <script src="vendors/nprogress/nprogress.js"></script>
-    
-    <script src="vendors/iCheck/icheck.min.js"></script>
-  
-    <script src="build/js/custom.min.js"></script>
-    
-    </div>
-      )}
-    </div>
+</div></div></div>
   );
     };
 

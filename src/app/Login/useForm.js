@@ -4,19 +4,23 @@ import Service from "../service/service.js";
 import { useHistory } from "react-router-dom";
 
 const useForm = (callback, Validate) => {
+
 const initialState = {
     email: "",
     password:""
   };
-     const history = useHistory();
 
+  const initialname={
+    name:""
+  };
+
+  const history = useHistory();
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [info, setInfo] = useState(values);
   const [comments,setComments]=useState(false);
-
-
+  const [uname, setName] = useState(initialname);
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
@@ -45,15 +49,12 @@ password:values.password
     };
     console.log("data ", data);
     Service.login_validation(data)
-      .then(response => {
-        console.log("1");    
-  console.log("2");
-
-  history.push('/dashboard');
-  history.go(0);
-
-     
+      .then(response => { 
+       Service.setMessage(response.data);
+       history.push('/dashboard');
+       history.go(0);
       })
+
  .catch(e => {
 setComments(true);
   history.push('/');

@@ -1,15 +1,21 @@
 import React, {useEffect,useState} from 'react'
-import '../../assets/style1.css';
-//import '../../assets/chart-animation.css';
+import '../../assets/style.css';
+import '../../assets/table.css';
+
 //import '../../assets/g-icons.css';
 //import '../../assets/bootstrap.min.css';
 //import '../../assets/owl.carousel.min.css';
 //import '../../assets/table.css';
 import org from '../../assets/images/oge.svg';
 import $ from 'jquery';
+import Service from "../service/service.js";
+
 function Dashboard() {
 
-	  function createDonutCharts() {
+var name=Service.readMessage();
+console.log("from login  ",name);
+
+ function createDonutCharts() {
   $("<style type='text/css' id='dynamic' />").appendTo("head");
   $("div[chart-type*=donut]").each(function () {
       var d = $(this);
@@ -53,19 +59,25 @@ function Dashboard() {
 $(document).ready(function() {
   createDonutCharts();
 });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   return (
+       
    <div className="db-bg">
+   <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+  
+   
      <div className="container-fluid">
  <div className="dashboard">
-
                     <div className="row row-border">      
                               <div className="col breadcrum"><span style={{position:"relative",left:"50px"}}>
-                           <i className="fa fa-home" style={{paddingRight: "10px"}}></i><a href="">Home</a>
+                           <i className="fa fa-home" style={{paddingRight: "10px"}}></i><a href="/dashboard/">Home</a>
                         </span></div>
                          <div className="col-7"></div>
-                      <div className="col welcome"><h6 >Welcome back!</h6>
-                          <span><a href=""></a></span>
+                      <div className="col welcome"><h6 >Welcome back {name}!</h6>
+                       
                           </div>
                     </div>
 
@@ -386,6 +398,21 @@ $(document).ready(function() {
                         <div className="col-md-12 col-sm-12 col-xs-12">
                             <div className="x_panel">
                                   <div className="x_content">
+                                  <div id="datatable-buttons_wrapper" className="dataTables_wrapper no-footer">
+                                    <div className="dt-buttons btn-group">
+                                      <a className="btn btn-default buttons-copy buttons-html5 btn-sm" tabIndex="0" 
+                                      aria-controls="datatable-buttons" href="#"><span>Copy</span></a>
+                                      <a className="btn btn-default buttons-csv buttons-html5 btn-sm" tabIndex="0" 
+                                      aria-controls="datatable-buttons" href="#"><span>CSV</span></a>
+                                      <a className="btn btn-default buttons-print btn-sm" tabIndex="0" 
+                                      aria-controls="datatable-buttons" href="#"><span>Print</span></a></div>
+                                      <div className="dataTables_length" id="datatable-buttons_length">
+                                        <label>Show <select name="datatable-buttons_length" aria-controls="datatable-buttons" 
+                                        className=""><option value="10">10</option><option value="25">25</option>
+                                        <option value="50">50</option><option value="100">100</option></select> entries</label>
+                                        </div><div id="datatable-buttons_filter" className="dataTables_filter">
+                                          <label>Search:<input type="search" className="" placeholder=""
+                                           aria-controls="datatable-buttons"/></label></div>
                                     <table id="datatable-buttons" className="table table-striped table-bordered">
                                   <thead>
                                     <tr>
@@ -463,6 +490,9 @@ $(document).ready(function() {
 </div>
 </div>
   )
-}
+ 
+  </div>
+
+  )};
 
 export default Dashboard
